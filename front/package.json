@@ -10,6 +10,7 @@
   "author": "onezeun",
   "license": "ISC",
   "dependencies": {
-    "next": "^12.1.0"
+    "next": "^12.1.0",
+    "prop-types": "^15.8.1"
   }
 }
