@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Menu, Input, Row, Col } from 'antd';
+import styled from 'styled-components';
 
-import UserProfile from './UserProfile'
-import LoginForm from './LoginForm'
+import UserProfile from './UserProfile';
+import LoginForm from './LoginForm';
+
+const SearchInput = styled(Input.Search)`
+  vertical-align: middle;
+`;
 
 const AppLayout = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState('false'); // 더미데이터
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // 서버가 없는 상태로 useState를 임시로 사용
 
   return (
     <div>
@@ -23,7 +28,7 @@ const AppLayout = ({ children }) => {
           </Link>
         </Menu.Item>
         <Menu.Item>
-          <Input.Search enterButton style={{ verticalAlign: 'middle' }} />
+          <SearchInput enterButton />
         </Menu.Item>
         <Menu.Item>
           <Link href="/signup">
@@ -31,15 +36,21 @@ const AppLayout = ({ children }) => {
           </Link>
         </Menu.Item>
       </Menu>
-      <Row gutter={8}> {/* gutter : 컬럼 사이의 간격 */ }
+      <Row gutter={8}> {/* gutter : 컬럼 사이의 간격 */}
         <Col xs={24} md={6}>
-          <LoginForm />
+          {isLoggedIn ? <UserProfile setIsLoggedIn={setIsLoggedIn} /> : <LoginForm setIsLoggedIn={setIsLoggedIn}/>}
         </Col>
         <Col xs={24} md={12}>
           {children}
         </Col>
         <Col xs={24} md={6}>
-          <a href="https://velog.io/@onezeun" target="_blank" rel="noreferrer noopener">Made by onezeun</a>
+          <a
+            href="https://velog.io/@onezeun"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Made by onezeun
+          </a>
         </Col>
       </Row>
     </div>
