@@ -1,6 +1,7 @@
 export const initialState = {
   mainPosts: [{
     id:1,
+    // 작성자의 ID
     User: {
       id:1,
       nickname: '하찌',
@@ -30,7 +31,7 @@ export const initialState = {
 }
 
 // 게시글 작성
-const ADD_POST = 'ADD_POST'; // 변수로 지정해주면 오타 났을경우 잘 알 수 있음
+const ADD_POST = 'ADD_POST'; // 변수로 지정해 주면 오타 났을 경우 잘 알 수 있음
 export const addPost = {
   type: ADD_POST,
 }
